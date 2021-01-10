@@ -209,8 +209,8 @@
   ;; (background 31 31 20)
   (apply background @bg)
 
-  (let [tiles-in-row 25
-        tiles-in-col 25
+  (let [tiles-in-row 50
+        tiles-in-col 50
         start-x 0
         start-y 0
         end-x 1200
@@ -236,13 +236,17 @@
 
     (no-loop)))
 
-#_(reset! type :lines)
+(do
+  (reset! type :lines)
+  (reset! bg [200 10 20])
+  (reset! color-1 [200 10 240]))
+  (reset! color-2 @color-1)
 #_(reset! type :curve)
-(reset! type :bezier)
+#_(reset! type :bezier)
 (defsketch tiles
   :title "tiles"
   :renderer :svg
-  :output-file "generated/tiles.svg"
+  :output-file "generated/tiles-lines.svg"
   :settings
   (fn []
     (smooth 2))
